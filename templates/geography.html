@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+
+{% block title %}География{% endblock %}
+{% block name %}География{% endblock %}
+{% block name1 %}География1{% endblock %}
+{% block content %}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+.table{
+      margin: 20px;
+      color: #717171;
+      line-height: 25px;
+    }
+    .table thead th {
+        font-weight: bold;
+        text-align: left;
+        border: none;
+        padding: 10px 15px;
+        background: #A9BCD0;
+        font-size: 14px;
+        color: #485267;
+        {#border-left: 1px solid #ddd;#}
+        border-right: 1px solid #D8DBE2;
+}
+    .table tbody td {
+        color: #485267;
+	text-align: left;
+	border-right: 1px solid #D8DBE2;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+    .table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+.table tbody tr:nth-child(even){
+	background: #EEF1FA;
+}
+    .table tbody tr:hover {background: #DE6C83;}
+
+    .alltable{
+        width: 96%;
+    }
+
+    .n{
+        padding: 20px;
+  background: #EEF1FA;
+  color: #A9BCD0;
+  border-bottom: 1px solid #e0e4e8;
+    }
+    .images{
+margin: 20px;
+        display: flex;
+        flex-direction: row;
+  align-items: center;
+  justify-content: center;
+      }
+
+    .images img{
+        width: 49%;
+        margin: 10px;
+    }
+    </style>
+    <div class="n">Аналитика</div>
+    <div class="images">
+        <img src="{{ salary_city.image.url }}" alt="" style="float: left">
+        <img src="{{ vacancy_city.image.url }}" alt="" style="float: right">
+    </div>
+    <div class="n">Статистика по годам</div>
+    <table class="alltable" ><tr>
+    <td>
+    <table class="table">
+	<thead>
+		<tr>
+            <th ><center>Город</center></th>
+            <th ><center>Средняя зарплата</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for sal in salary %}
+                <tr>
+                    <td> <center>{{ sal.city_salary}}</center></td>
+                    <td><center> {{ sal.salary }}</center></td>
+                </tr>
+            {% endfor %}
+	</tbody>
+</table>
+    </td>
+    <td>
+        <table class="table">
+
+        </table>
+    </td>
+    <td>
+    <table class="table">
+	<thead>
+		<tr>
+            <th ><center>Город</center></th>
+        <th ><center>Доля вакансий</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for vac in vacancy %}
+                <tr>
+                    <td><center>{{ vac.city_vacancy}}</center></td>
+                    <td><center> {{ vac.vacancy|stringformat:".4f%%" }}</center></td>
+                </tr>
+            {% endfor %}
+	</tbody>
+</table>
+    </td>
+    </tr></table>
+{% endblock %}

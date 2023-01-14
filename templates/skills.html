@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block title %}Навыки{% endblock %}
+{% block name %}Навыки{% endblock %}
+{% block name1 %}Навыки1{% endblock %}
+{% block content %}
+    <style>
+        .table{
+      margin: 20px;
+      color: #717171;
+      line-height: 25px;
+            width: 96%;
+    }
+    .table thead th {
+        font-weight: bold;
+        text-align: left;
+        border: none;
+        padding: 10px 15px;
+        background: #A9BCD0;
+        font-size: 14px;
+        color: #485267;
+        {#border-left: 1px solid #ddd;#}
+        border-right: 1px solid #D8DBE2;
+}
+    .table tbody td {
+        color: #485267;
+	text-align: left;
+	{#border-left: 1px solid #D8DBE2;#}
+	border-right: 1px solid #D8DBE2;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+    .table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+.table tbody tr:nth-child(even){
+	background: #EEF1FA;
+}
+    .table tbody tr:hover {background: #DE6C83;}
+
+    .n{
+        padding: 20px;
+  background: #EEF1FA;
+  color: #A9BCD0;
+  border-bottom: 1px solid #e0e4e8;
+    }
+    .images{
+        margin: 20px;
+      }
+
+    .images img{
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    </style>
+    <div class="n">ТОП-10 навыков по годам для профессии UX/UI design</div>
+    {% for skill in skills %}
+        <div class="images">
+        <img src="{{ skill.image.url }}" alt="" style="float: left">
+        </div>
+    {% endfor %}
+    <table class="table">
+	<thead>
+		<tr>
+            <th bgcolor=#cad4e0><center>Год</center></th>
+        <th bgcolor="#cad4e0"><center>Навыки</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for skill in skills %}
+                <tr>
+                    <td><center>{{ skill.year}}</center></td>
+                    <td> <center>{{ skill.skills}}</center></td>
+                </tr>
+            {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

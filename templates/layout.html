@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+</head>
+<body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+        font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    body{
+       background-color: #F7F8FF;
+    }
+
+    .wrapper{
+      display: flex;
+      position: relative;
+    }
+
+    .wrapper .sidebar{
+      width: 200px;
+      height: 100%;
+      background: #373F51;
+      padding: 30px 0px;
+      position: fixed;
+    }
+
+    .wrapper .sidebar h2{
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .wrapper .sidebar ul li{
+      padding: 15px;
+      border-bottom: 1px solid #58A4B0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+.wrapper .sidebar ul li a{
+  color: #A9BCD0;
+  display: block;
+}
+
+.wrapper .sidebar ul li a .fas{
+  width: 25px;
+}
+
+.wrapper .sidebar ul li:hover{
+  background-color: #58A4B0;
+}
+
+.wrapper .sidebar ul li:hover a{
+  color: #fff;
+}
+
+.wrapper .sidebar .social_media h1{
+    display: block;
+    width: 150px;
+    text-align: center;
+    color: #485267;
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+.wrapper .sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+    .wrapper .main_content .header{
+
+        padding: 20px;
+        background: #fff;
+        color: #DE6C83;
+        border-bottom: 1px solid #e0e4e8;
+        position: fixed;
+        width: 100%;
+        font-weight: bold
+        {#margin-top: -41px;#}
+    }
+    .wrapper .main_content .header1{
+        padding: 20px;
+        background: #fff;
+        color: #DE6C83;
+        border-bottom: 1px solid #e0e4e8;
+    }
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
+
+@media (max-height: 500px){
+  .social_media{
+    display: none !important;
+  }
+}
+</style>
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>UX&UI world</h2>
+        <ul>
+            <li><a href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="{% url 'relevance' %}"><i class="fas fa-solid fa-star"></i>Relevance</a></li>
+            <li><a href="{% url 'geography' %}"><i class="fas fa-solid fa-globe"></i>Geography</a></li>
+            <li><a href="{% url 'skills' %}"><i class="fas fa-solid fa-pen"></i>Skills</a></li>
+            <li><a href="{% url 'recent vacancies' %}"><i class="fas fa-solid fa-file"></i>Vacancies</a></li>
+        </ul>
+        <div class="social_media">
+            <h1>Деньщик Дарья Дмитриевна РИ-210950</h1>
+        </div>
+    </div>
+    <div class="main_content">
+        <div class="header" >{% block name %}{% endblock %}</div>
+        <div class="header1">{% block name1 %}{% endblock %}</div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

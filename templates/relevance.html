@@ -1,0 +1,100 @@
+{% extends 'layout.html' %}
+
+{% block title %}Востребованность{% endblock %}
+{% block name %}Востребованность{% endblock %}
+{% block name1 %}Востребованность{% endblock %}
+{% block content %}
+    <style>
+     @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+    .table{
+      margin: 20px;
+      color: #717171;
+      line-height: 25px;
+        width: 96%;
+    }
+    .n{
+        {#margin: 20px;#}
+        {#color: #485267;#}
+        {#line-height: 25px;#}
+        {#font-weight: bold;#}
+        {#font-size: 34px;#}
+        {#text-align: center;#}
+        padding: 20px;
+  background: #EEF1FA;
+  color: #A9BCD0;
+  border-bottom: 1px solid #e0e4e8;
+
+    }
+    .table thead th {
+        font-weight: bold;
+        text-align: left;
+        border: none;
+        padding: 10px 15px;
+        background: #A9BCD0;
+        font-size: 14px;
+        color: #485267;
+        {#border-left: 1px solid #ddd;#}
+        border-right: 1px solid #D8DBE2;
+}
+    .table tbody td {
+        color: #485267;
+	text-align: left;
+	{#border-left: 1px solid #D8DBE2;#}
+	border-right: 1px solid #D8DBE2;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+    .table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+.table tbody tr:nth-child(even){
+	background: #EEF1FA;
+}
+    .table tbody tr:hover {background: #DE6C83;}
+
+    .images{
+margin: 20px;
+        display: flex;
+        flex-direction: row;
+  align-items: center;
+  justify-content: center;
+      }
+
+    .images img{
+        width: 49%;
+        margin: 10px;
+    }
+
+    </style>
+    <div class="n">Аналитика</div>
+    <div class="images">
+        <img src="{{ slary.image.url }}" alt="" style="float: left">
+        <img src="{{ vacancy.image.url }}" alt="" style="float: right">
+    </div>
+    <div class="n">Статистика по годам</div>
+<table class="table">
+	<thead>
+		<tr>
+            <th bgcolor=#cad4e0><center>Год</center></th>
+            <th bgcolor="#cad4e0"><center>Средняя зарплата</center></th>
+            <th bgcolor="#cad4e0"><center>Средняя зарплата UX/UI design</center></th>
+            <th bgcolor="#cad4e0"><center>Колличество вакансий</center></th>
+            <th bgcolor="#cad4e0"><center>Колличество вакансий UX/UI design</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in items %}
+            <tr>
+                <td><center>{{ item.year}}</center></td>
+                <td><center> {{ item.average_salary }}</center></td>
+                <td><center>{{ item.average_salary_prof }}</center></td>
+                <td><center>{{ item.vacancy_count }}</center></td>
+                <td><center>{{ item.vacancy_count_prof }}</center></td>
+            </tr>
+        {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

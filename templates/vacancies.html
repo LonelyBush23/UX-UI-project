@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block title %}Последние вакании{% endblock %}
+{% block name %}Последние вакании{% endblock %}
+{% block name1 %}Последние вакании{% endblock %}
+{% block content %}
+    <style>
+.table{
+      margin: 20px;
+      color: #717171;
+      line-height: 25px;
+        width: 96%;
+    }
+    .n{
+        {#margin: 20px;#}
+        {#color: #485267;#}
+        {#line-height: 25px;#}
+        {#font-weight: bold;#}
+        {#font-size: 34px;#}
+        {#text-align: center;#}
+        padding: 20px;
+  background: #EEF1FA;
+  color: #A9BCD0;
+  border-bottom: 1px solid #e0e4e8;
+
+    }
+    .table thead th {
+        font-weight: bold;
+        text-align: left;
+        border: none;
+        padding: 10px 15px;
+        background: #A9BCD0;
+        font-size: 14px;
+        color: #485267;
+        {#border-left: 1px solid #ddd;#}
+        border-right: 1px solid #D8DBE2;
+}
+    .table tbody td {
+        color: #485267;
+	text-align: left;
+	{#border-left: 1px solid #D8DBE2;#}
+	border-right: 1px solid #D8DBE2;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+    .table thead tr th:last-child, .table tbody tr td:last-child {
+	border-right: none;
+}
+.table tbody tr:nth-child(even){
+	background: #EEF1FA;
+}
+ form {margin: 20px;
+
+ }
+ form input {
+  color: #485267;
+  padding: 10px 10px;
+  border: 1px solid;
+  font-family: 'rebuchet MS', sans-serif;
+
+ }
+    </style>
+    <form action = "" method = "get">
+{#        <label for="date">Введите дату </label>#}
+        <input id="date" type="text" name="date">
+        <input type="submit" value="OK">
+    </form>
+    <table class="table">
+	<thead>
+		<tr>
+            <th bgcolor=#cad4e0><center>Название</center></th>
+            <th bgcolor="#cad4e0"><center>Описание</center></th>
+            <th bgcolor="#cad4e0"><center>Навыки</center></th>
+            <th bgcolor="#cad4e0"><center>Компания</center></th>
+            <th bgcolor="#cad4e0"><center>Оклад</center></th>
+            <th bgcolor="#cad4e0"><center>Регион</center></th>
+            <th bgcolor="#cad4e0"><center>Дата публикации</center></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for vac in vacancies %}
+            <tr>
+                <td><center>{{ vac.name}}</center></td>
+                <td> <center>{{ vac.description }}</center></td>
+                <td><center>{{ vac.key_skills }}</center></td>
+                <td><center>{{ vac.employer_name }}</center></td>
+                <td><center>{{ vac.salary_currency }}</center></td>
+                <td><center>{{ vac.area_name }}</center></td>
+                <td><center>{{ vac.published_at }}</center></td>
+            </tr>
+        {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

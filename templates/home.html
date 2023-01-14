@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}Главная страница{% endblock %}
+{% block name %}UX/UI design{% endblock %}
+{% block name1 %}UX/UI design{% endblock %}
+{% block content %}
+    <style>
+    .info{
+  margin: 20px;
+  color: #485267;
+  line-height: 25px;
+}
+    .hea{
+ padding: 20px;
+  background: #58A4B0;
+  color: #fff;
+  border-bottom: 1px solid #e0e4e8
+}
+    .info div{
+  margin-bottom: 20px;
+
+}
+    img{
+        width: 100%;
+    }
+    </style>
+    <div class="hea">{{ what_is_it.header}}</div>
+    <div class="info">
+        {% for el in what_is_it.description %}
+            <div>{{ el }}</div>
+        {% endfor %}
+    <img src="{{ what_is_it.image }}" alt="">
+    </div>
+    <div class="hea">{{ what_do.header}}</div>
+    <div class="info">
+        {% for el in what_do.description %}
+            <div>{{ el }}</div>
+        {% endfor %}
+    </div>
+    <div class="hea">{{ what_known.header}}</div>
+    <div class="info">
+        {% for el in what_known.description %}
+            <div>{{ el }}</div>
+        {% endfor %}
+    </div>
+    <div class="hea">{{ ws.header}}</div>
+    <div class="info">
+        {% for el in ws.description %}
+            <div>{{ el }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}
